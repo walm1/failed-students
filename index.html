@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reprobados</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon">
+</head>
+<body>
+    <div id="nav-bar">
+        <img class="img1" src="./imgs/logo.png" alt="">
+        <h2 class="main-name">C.E.C Liga de Vida Nueva</h2>
+    </div>
+
+
+    <div id="content">
+        <h1 class="title">Generar Informes de Reprobados</h1>
+        <div id="form">
+            <div>
+                <label for="link">Link del Libro (Google Sheets):</label>
+                <input type="text" name="link" id="workbookId">
+            <br>
+            <label for="profes">Profesor/a:</label>
+                <select name="profes" id="profesores">
+                    <option value=""></option>
+                    <option value="Mauro López">Mauro López</option>
+                </select>
+                <br>
+                <label for="materia">Materia o Curso:</label>
+                <select name="materia" id="class">
+                    <option value="-"></option>
+                    <option value="Matemáticas">Matemáticas</option>
+                    <option value="Ciencias Sociales">Ciencias Sociales</option>
+                    <option value="Lengua">Lengua y Literatura</option>
+                    <option value="Ciencias Naturales">Ciencias Naturales</option>
+                    <option value="Física fundamental">Física Fundamental</option>
+                    <option value="Estadística">Estadística</option>
+                    <option value="Tic's">Tics</option>
+                    <option value="Ética">Ética</option>
+                </select>
+                <br>
+                <label for="grado">Grado:</label>
+                <select name="grado" id="grado">
+                    <option value=""></option>
+                    <option value="Primero Básico A">Primero Básico "A"</option>
+                    <option value="Primero Básico B">Primero Básico "B"</option>
+                    <option value="Segundo Básico A">Segundoo Básico "A"</option>
+                    <option value="Segundo Básico B">Segundo Básico "B"</option>
+                    <option value="Tercero Básico A">Tercero Básico "A"</option>
+                    <option value="Tercero Básico B">Tercero Básico "B"</option>
+                    <option value="Cuarto BACO">Cuarto BACO</option>
+                    <option value="Cuarto BADI">Cuarto BADI</option>
+                    <option value="Cuarto BAMU">Cuarto BAMU</option>
+                    <option value="Cuarto BAFI">Cuarto BAFI</option>
+                    <option value="Cuarto PC">Cuarto PC</option>
+                    <option value="Quinto BACO">Quinto BACO</option>
+                    <option value="Quinto BADI">Quinto BADI</option>
+                    <option value="Quinto BAMU">Quinto BAMU</option>
+                    <option value="Quinto BAFI">Quinto BAFI</option>
+                    <option value="Quinto PC">Quinto PC</option>
+                    <option value="Sexto PC">Sexto PC</option>
+                </select>
+                <br>
+                <label for="hoja">Hoja:</label>
+                <select name="hoja" id="sheet-selection">
+                </select>
+            </div>
+        </div>
+    </div>
+    <!--Add buttons to initiate auth sequence and sign out-->
+
+    <script src="./js/main.js"></script>
+    <script async defer src="./js/auth.js"></script>
+    <script async defer src="./js/getStudentData.js"></script>
+    <script async defer src="./js/generatePdf.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js" id="gapi""></script>
+    <script async defer src="https://accounts.google.com/gsi/client" id="gis"></script>
+
+    <div class="btns">
+        <button id="authorize_button" onclick="handleAuthClick()">INGRESAR</button>
+        <button id="generate">GENERAR</button>
+        <button id="signout_button" onclick="handleSignoutClick()">SALIR</button>
+    </div>
+    
+</body>
+</html>
