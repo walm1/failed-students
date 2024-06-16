@@ -89,11 +89,11 @@ btn.onclick = async() =>{
   const grado = document.getElementById('grado').value 
   const sheet = document.getElementById('sheet-selection').value
   console.log(classes, grado, teachers, sheet,workbookId)
-  if(classes == '' || grado == '' || teachers == '' || sheet == '' || workbookId == '') {
+  if(classes == '' || grado == '' || teachers == '' || sheet == '' || workbookId == ''){
     alert('Faltan campos por llenar.')
     return
   }
-  await listStudentData()
+  await listStudentData();
 }
 
   if (gapi.client.getToken() === null) {
