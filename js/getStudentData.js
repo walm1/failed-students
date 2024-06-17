@@ -117,11 +117,13 @@ async function listStudentData() {
             responseOfStudents = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: path,
                 range: `${sheetToEvaluate}!A${rangeForEvaluate}:${finalGradeCell}${rangeForEvaluate}`
-            })       
+            })    
+
             const resultForStudents = responseOfStudents.result
             
             console.log(resultForStudents.values[0])
             let studentName = resultForStudents.values[0][1]
+            
             if(studentName.includes(',')){
                 var nameForApi = studentName.split(',').slice(1)
                 nameForApi = nameForApi.toString()
