@@ -96,3 +96,44 @@ select{
     height: 60px;
     border-radius: 50px;
 }
+
+#mate{
+    display:none;
+}
+#fifu{
+    display:none;
+}
+#estadistica{
+    display:none;
+}
+#social{
+    display:none;
+}
+#etica{
+    display:none;
+}
+#seminario{
+    display:none;
+}
+#compu1{
+    display:none;
+}
+
+#lab{
+    display:none;
+}
+#Repa{
+    display:none;
+}
+#LyL{
+    display:none;
+}
+#natu{
+    display:none;
+}
+#music{
+    display:none;
+}
+#conta{
+    display:none;
+}
