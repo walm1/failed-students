@@ -91,21 +91,34 @@ profesores.onchange = ()=>{
     }
 
 async function listSheets(){
+    try{
     responseForWb = await gapi.client.sheets.spreadsheets.get({
         spreadsheetId: path
     })
+  
+    console.log(responseForWb.status)
+    
     const responsewb = responseForWb.result.sheets
-    console.log(responsewb)
+    console.log(responsewb.values)
     if(responsewb){
         responsewb.forEach((hoja) =>{
             let name = hoja.properties.title
-            console.log(name)
             let el = document.createElement('option')
             el.setAttribute('value', name)
             el.innerText = name
             selectionSpace.append(el)
         })
     }
+  } catch(err){
+    if(err.status === 403){
+      alert('La app no tiene permiso para leer el link de la hoja')
+      alert(`para solucionar este problema comparta el libro con el correo:
+js-api@proyectoinformes-426403.iam.gserviceaccount.com 
+y dele permisos de lectura y edición.
+        `)
+        return
+    }
+  }
 }
 
 

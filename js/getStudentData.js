@@ -122,7 +122,9 @@ async function listStudentData() {
             const resultForStudents = responseOfStudents.result
             
             console.log(resultForStudents.values[0])
+            let clave = resultForStudents.values[0][0]
             let studentName = resultForStudents.values[0][1]
+            let finalGrade = resultForStudents.values[0][resultForStudents.values[0].length - 1]
             
             if(studentName.includes(',')){
                 var nameForApi = studentName.split(',').slice(1)
@@ -138,7 +140,12 @@ async function listStudentData() {
             //var genderForObserv = await getGender(nameForApi)
             var genderForObserv = 'El alumno'
             var observ = `${genderForObserv} presentó bajo rendimiento durante las actividades del bimestre, obteniendo también una mala nota dentro del parcial, siendo de puntos, incentivo a ${genderForObserv} que ponga mayor empeño durante las actividades y especialmente durante las evaluaciones, pues obtuvo puntos.`
-            console.log(observ)
+            let paramObj = {
+                clave,
+                studentName,
+                finalGrade
+            }
+            generatePdf(paramObj)
         }
     }
 }

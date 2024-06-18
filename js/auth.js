@@ -80,6 +80,9 @@ function handleAuthClick() {
     btn.style.display = 'inline-block'
     document.getElementById('authorize_button').innerText = 'REFRESCAR';
     await listSheets()
+    if(document.getElementById('sheet-selection').value == ''){
+      return
+    }
   };
 
 btn.onclick = async() =>{
@@ -114,9 +117,9 @@ function handleSignoutClick() {
   if (token !== null) {
     google.accounts.oauth2.revoke(token.access_token);
     gapi.client.setToken('');
-    document.getElementById('content').innerText = '';
     document.getElementById('authorize_button').innerText = 'Authorize';
     document.getElementById('signout_button').style.display = 'none';
+    btn.style.display = 'none'
   }
 }
 

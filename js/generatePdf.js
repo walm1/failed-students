@@ -1,6 +1,4 @@
- // Flatten to string to display  
-    // primer if
-async function generatePdf(){
-    return
+async function generatePdf(obj){
+    console.log(obj.finalGrade, obj.studentName, obj.clave)
 }
     

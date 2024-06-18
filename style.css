@@ -29,6 +29,7 @@ body{
 }
 
 #content{
+    height: 100%;
     width: 65%;
     margin-right: auto;
     margin-left: auto;
@@ -40,6 +41,7 @@ body{
 }
 
 #form{
+    height: 100%;
     margin-top: 50px;
 }
 
@@ -136,4 +138,16 @@ select{
 }
 #conta{
     display:none;
+}
+
+#ing{
+    display: none;
+}
+
+#quim{
+    display: none;
+}
+
+#bio{
+    display: none;
 }
