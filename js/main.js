@@ -1,4 +1,3 @@
-const workbook = document.getElementById('workbookId').value
 const selectionSpace = document.getElementById('sheet-selection')
 const profesores = document.getElementById("profesores")
 const mate = document.getElementById("mate")
@@ -17,12 +16,12 @@ const conta = document.getElementById("conta")
 const bio = document.getElementById('bio')
 const quim = document.getElementById('quim')
 const ingles = document.getElementById('ing')
-let path = workbook.split('')
-path = path.slice(39, 83).join('')
+const signoutButton = document.getElementById('signout_button')
+const classes = document.getElementById('class')
 
 profesores.onchange = ()=>{
+        classes.value = ''
         let profes = document.getElementById("profesores").value
-        console.log(profes)
         if(profes=="Mauro López" || profes=="Henry Reyes"){
             mate.style.display = "inline-block"
             fifu.style.display = "inline-block"
@@ -91,6 +90,9 @@ profesores.onchange = ()=>{
     }
 
 async function listSheets(){
+    const workbook = document.getElementById('workbookId').value
+    let path = workbook.split('')
+    path = path.slice(39, 83).join('')
     try{
     responseForWb = await gapi.client.sheets.spreadsheets.get({
         spreadsheetId: path
@@ -116,15 +118,16 @@ async function listSheets(){
 js-api@proyectoinformes-426403.iam.gserviceaccount.com 
 y dele permisos de lectura y edición.
         `)
+      handleSignoutClick()
         return
     }
   }
 }
 
 
-//async function getGender(name){
-//     return fetch(`https://gender-api.com/get?name=${name}&country=GT&key=4b0f82e90ba4e2e274789d58a47314ee77a9f996241cd214a218c60047f58783`)
-  //  .then(response => {return response.json()})
+// async function getGender(name){
+   // return fetch(`https://gender-api.com/get?name=${name}&country=GT&key=4b0f82e90ba4e2e274789d58a47314ee77a9f996241cd214a218c60047f58783`)
+   // .then(response => {return response.json()})
 //    .then(res2 => 
   //      {
     //        var gender = res2.gender 
@@ -136,3 +139,5 @@ y dele permisos de lectura y edición.
     //    }
   //  )
 // }
+
+

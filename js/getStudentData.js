@@ -1,8 +1,11 @@
 async function listStudentData() {
+
     const sheetToEvaluate = document.getElementById('sheet-selection').value
+    const curso = document.getElementById('class').value
     let url = document.getElementById('workbookId').value;
     let path = url.split('')
     let finalGradeCell
+    let grado = document.getElementById('grado').value
     var ifc = 1
     path = path.slice(39, 83).join('')
 
@@ -50,7 +53,7 @@ async function listStudentData() {
                 spreadsheetId: path,
                 range: `${sheetToEvaluate}!C${1}:${finalGradeCell}${1}`
             })
-            const resultForActivities = responseOfActivityNames.result
+            var resultForActivities = responseOfActivityNames.result
             console.log(resultForActivities.values[0])
         }
     }
@@ -80,7 +83,7 @@ async function listStudentData() {
     let act11 = activitiesNames[10]
     let act12 = activitiesNames[11]
     let act13 = activitiesNames[12]
-    let act14 = activitiesNames[13]
+    let exam = activitiesNames[13]
     let act15 = activitiesNames[14]
     while(ifc > 0){
             responseOfFirstCell = await gapi.client.sheets.spreadsheets.values.get({
@@ -93,7 +96,6 @@ async function listStudentData() {
                 } else {
                     var firstCell = ifc
                     ifc = 0
-                    console.log(firstCell)
                 }
         }
 
@@ -125,7 +127,20 @@ async function listStudentData() {
             let clave = resultForStudents.values[0][0]
             let studentName = resultForStudents.values[0][1]
             let finalGrade = resultForStudents.values[0][resultForStudents.values[0].length - 1]
+            let nAct1 = resultForStudents.values[0][2]
+            let nAct2 = resultForStudents.values[0][3]
+            let nAct3 = resultForStudents.values[0][4]
+            let nAct4 = resultForStudents.values[0][5]
+            let nAct5 = resultForStudents.values[0][6]
+            let nAct6 = resultForStudents.values[0][7]
+            let nAct7 = resultForStudents.values[0][8]
+            let nAct8 = resultForStudents.values[0][9] 
+            let nQuiz = resultForStudents.values[0][10]
+            let nIntProyect = resultForStudents.values[0][11]
+            let nActitud = resultForStudents.values[0][12]
+            let nExam = resultForStudents.values[0][16]
             
+
             if(studentName.includes(',')){
                 var nameForApi = studentName.split(',').slice(1)
                 nameForApi = nameForApi.toString()
@@ -138,12 +153,36 @@ async function listStudentData() {
                 console.log(nameForApi)
             }
             //var genderForObserv = await getGender(nameForApi)
+            grado = grado.split(' ')
+            var rGrado = grado.slice(0,2)
+            rGrado = rGrado.join(' ')
+            var seccion = grado[2]
+            grado = grado.join(' ')
             var genderForObserv = 'El alumno'
             var observ = `${genderForObserv} presentó bajo rendimiento durante las actividades del bimestre, obteniendo también una mala nota dentro del parcial, siendo de puntos, incentivo a ${genderForObserv} que ponga mayor empeño durante las actividades y especialmente durante las evaluaciones, pues obtuvo puntos.`
             let paramObj = {
+                grado,
                 clave,
+                rGrado,
+                seccion,
                 studentName,
-                finalGrade
+                curso,
+                act1,
+                act2,
+                act3,
+                act4,
+                act5,
+                act6,
+                act7,
+                act8,
+                act9,
+                act10,
+                act11,
+                act12,
+                exam,
+                finalGrade,
+                observ
+
             }
             generatePdf(paramObj)
         }
