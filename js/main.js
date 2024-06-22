@@ -18,6 +18,25 @@ const quim = document.getElementById('quim')
 const ingles = document.getElementById('ing')
 const signoutButton = document.getElementById('signout_button')
 const classes = document.getElementById('class')
+const workbook = document.getElementById('workbookId')
+const grado = document.getElementById('grado')
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  if(localStorage.length > 0){
+    let items = localStorage.getItem('user-saved-data')
+    items = JSON.parse(items)
+    profesores.value = items.teacher
+    classes.value = items.clase
+    workbook.value = items.id 
+    return
+  } 
+
+    profesores.value = ''
+    classes.value = ''
+    workbook.value = ''
+    grado.value = ''
+    
+})
 
 profesores.onchange = ()=>{
         classes.value = ''
@@ -139,5 +158,3 @@ y dele permisos de lectura y edición.
     //    }
   //  )
 // }
-
-

@@ -89,13 +89,21 @@ btn.onclick = async() =>{
   const workbookId = document.getElementById('workbookId').value 
   const teachers = document.getElementById('profesores').value 
   const classes = document.getElementById('class').value
-  const grado = document.getElementById('grado').value 
+  const grados = document.getElementById('grado').value 
   const sheet = document.getElementById('sheet-selection').value
-  console.log(classes, grado, teachers, sheet,workbookId)
-  if(classes == '' || grado == '' || teachers == '' || sheet == '' || workbookId == ''){
+  if(classes == '' || grados == '' || teachers == '' || sheet == '' || workbookId == ''){
     alert('Faltan campos por llenar.')
     return
   }
+    let userSavedData = {
+      teacher: teachers,
+      id: workbookId,
+      clase: classes,
+      grado: grados
+    }
+    localStorage.setItem('user-saved-data', JSON.stringify(userSavedData))
+    console.log(localStorage.getItem('user-saved-data'))
+  
   await listStudentData();
 }
 

@@ -1,128 +1,51 @@
-const idSpreadSheet = '1aiKL0EiZV4C-QA4D221N0QxDdhB6y9pWyCpbxkAqmJ0'
-const idSheet = '1212381971'
-
-async function generatePdf(obj){
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
+async function generatePdf(obj, i){
+    if(i <= 5){
+        var idSpreadSheet = '1aiKL0EiZV4C-QA4D221N0QxDdhB6y9pWyCpbxkAqmJ0'
+        var idSheet = '1212381971'
+    } else{
+        var idSpreadSheet = '1hkCy3S7AnVaFXyLS6QS-17zwTO-sM691yRYluCR32mQ'
+        var idSheet = '1420434824'
+    }
+    requestUpdateName = await gapi.client.sheets.spreadsheets.values.batchUpdate({
         spreadsheetId: idSpreadSheet,
-        range: 'B11',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.studentName]]
+        resource: {
+            valueInputOption: 'USER_ENTERED',
+            data: [
+                {
+                    range: 'B11',
+                    values: [[obj.studentName]]
+                },
+                {
+                    range: 'B12',
+                    values: [[obj.grado]]
+                },
+                {
+                    range: 'D11:F11',
+                    values: [[obj.curso]]
+                },
+                {
+                    range: 'D12:F12',
+                    values: [[obj.seccion]]
+                },
+                {
+                    range: 'B17:C17',
+                    values: [[obj.act1]]
+                },
+                {
+                    range: 'B18:C18',
+                    values: [[obj.act2]]
+                },
+                {
+                    range: 'B19:C19',
+                    values: [[obj.act3]]
+                },
+                {
+                    range: 'A32:F32',
+                    values: [[obj.observ]]
+                }
+            ]
+        }
     })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'D11:F11',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.curso]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B12',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.rGrado]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'D12:F12',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.seccion]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'D12:F12',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.seccion]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B17:C17',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.act1]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B18:C18',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.act2]]
-    })
-    
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B19:C19',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.act3]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B20:C20',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.act4]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B21:C21',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.act5]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B22:C22',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.act6]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B23:C23',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.act7]]
-    })
-
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B24:C24',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.act8]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B25:C25',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.act9]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B26:C26',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.act10]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B27:C27',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.act11]]
-    })
-
-    requestUpdateName = await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: idSpreadSheet,
-        range: 'B28:C28',
-        valueInputOption: 'USER_ENTERED',
-        values: [[obj.exam]]
-    })
-    
-
 
     updateSheetName = await gapi.client.sheets.spreadsheets.batchUpdate({
         spreadsheetId: idSpreadSheet,
@@ -142,7 +65,11 @@ async function generatePdf(obj){
 
     })
 
-    window.open('https://docs.google.com/spreadsheets/d/1aiKL0EiZV4C-QA4D221N0QxDdhB6y9pWyCpbxkAqmJ0/export?exportFormat=pdf&format=pdf&gid=1212381971')
-
+    var link = document.createElement("a");
+    link.setAttribute('target', '_blank')
+    link.download = `Informe ${obj.grado} + Clave ${obj.clave}`; // <- name instead of 'name'
+    link.href = `https://docs.google.com/spreadsheets/${idSpreadSheet}/export?exportFormat=pdf&format=pdf&gid=${idSheet}`
+    link.click();
+    link.remove();
 }
     

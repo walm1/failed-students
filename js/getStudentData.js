@@ -6,8 +6,10 @@ async function listStudentData() {
     let path = url.split('')
     let finalGradeCell
     let grado = document.getElementById('grado').value
+    let iterable = 0
     var ifc = 1
     path = path.slice(39, 83).join('')
+
 
     try {
       response = await gapi.client.sheets.spreadsheets.values.get({
@@ -41,7 +43,7 @@ async function listStudentData() {
                                 spreadsheetId: path,
                                 range: `${sheetToEvaluate}!C${1}:${finalGradeCell}${1}`
                             })
-                            const resultForActivities = responseOfActivityNames.result
+                            var resultForActivities = responseOfActivityNames.result
                             console.log(resultForActivities.values[0])
                         }
                       }
@@ -116,6 +118,7 @@ async function listStudentData() {
         })
         const resultOfStudents = responseForStudents.result
         if(parseInt(resultOfStudents.values[0][0]) < 60){
+            iterable = iterable + 1
             responseOfStudents = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: path,
                 range: `${sheetToEvaluate}!A${rangeForEvaluate}:${finalGradeCell}${rangeForEvaluate}`
@@ -182,9 +185,9 @@ async function listStudentData() {
                 exam,
                 finalGrade,
                 observ
-
             }
-            generatePdf(paramObj)
+
+            await generatePdf(paramObj,iterable)
         }
     }
 }
