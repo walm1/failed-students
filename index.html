@@ -15,8 +15,8 @@
 
 
     <div id="content">
-        <h1 class="title">Generar Informes de Reprobados</h1>
-        <div id="form">
+        <h1 class="title">GENERAR INFORMES</h1>
+        <form id="form">
             <div>
                 <label for="link">Link del Libro (Google Sheets):</label>
                 <input type="text" name="link" id="workbookId">
@@ -90,11 +90,12 @@
                     
                 </select>
             </div>
-        </div>
+        </form>
     </div>
     <!--Add buttons to initiate auth sequence and sign out-->
 
     <script src="./js/main.js"></script>
+    <script src="./js/getValues.js"></script>
     <script async defer src="./js/auth.js"></script>
     <script async defer src="./js/getStudentData.js"></script>
     <script async defer src="./js/generatePdf.js"></script>

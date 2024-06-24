@@ -144,17 +144,13 @@ y dele permisos de lectura y edición.
 }
 
 
-// async function getGender(name){
-   // return fetch(`https://gender-api.com/get?name=${name}&country=GT&key=4b0f82e90ba4e2e274789d58a47314ee77a9f996241cd214a218c60047f58783`)
-   // .then(response => {return response.json()})
-//    .then(res2 => 
-  //      {
-    //        var gender = res2.gender 
-      //      if(gender == 'female'){
-        //        return 'La alumna'
-          //  } else {
-    //           return 'El alumno'
-      //      }
-    //    }
-  //  )
-// }
+ async function getGender(name){
+    return fetch(`https://gender-api.com/get?name=${name}&country=GT&key=4b0f82e90ba4e2e274789d58a47314ee77a9f996241cd214a218c60047f58783`)
+    .then(response => {return response.json()})
+    .then(res2 => 
+        {
+            var gender = res2.gender 
+            return gender == 'female' ? 'La alumna' : 'El alumno'
+        }
+  )
+}

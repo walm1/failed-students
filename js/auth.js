@@ -72,6 +72,10 @@ function maybeEnableButtons() {
  *  Sign in the user upon button click.
  */
 function handleAuthClick() {
+  const workbookId = document.getElementById('workbookId').value
+  if(!workbookId || workbookId == ''){
+    return alert('Ingrese el link antes de autenticarse')
+  }
   tokenClient.callback = async (resp) => {
     if (resp.error !== undefined) {
       throw (resp);
@@ -80,9 +84,6 @@ function handleAuthClick() {
     btn.style.display = 'inline-block'
     document.getElementById('authorize_button').innerText = 'REFRESCAR';
     await listSheets()
-    if(document.getElementById('sheet-selection').value == ''){
-      return
-    }
   };
 
 btn.onclick = async() =>{
