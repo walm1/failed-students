@@ -12,14 +12,12 @@
         <img class="img1" src="./imgs/logo.png" alt="">
         <h2 class="main-name">C.E.C Liga de Vida Nueva</h2>
     </div>
-
-
     <div id="content">
         <h1 class="title">GENERAR INFORMES</h1>
-        <form id="form">
-            <div>
+        <div id="form">
+            <div id="labd">
                 <label for="link">Link del Libro (Google Sheets):</label>
-                <input type="text" name="link" id="workbookId">
+                <input type="text" name="link" id="workbookId" placeholder="Ejemplo: https://docs.google.com/spreadsheets/d/1aiKL0EiZV4C-QA4D221N0QxDdhB6y9pWyCpbxkAqmJ0/edit?gid=1212381971#gid=1212381971">
             <br>
             <label for="profes">Profesor/a:</label>
                 <select name="profes" id="profesores">
@@ -90,22 +88,22 @@
                     
                 </select>
             </div>
-        </form>
+            <script src="./js/main.js"></script>
+            <script src="./js/getValues.js"></script>
+            <script async defer src="./js/auth.js"></script>
+            <script async defer src="./js/getStudentData.js"></script>
+            <script async defer src="./js/generatePdf.js"></script>
+            <script async defer src="https://apis.google.com/js/api.js" id="gapi""></script>
+            <script async defer src="https://accounts.google.com/gsi/client" id="gis"></script>
+            <!--Add buttons to initiate auth sequence and sign out-->
+            <div class="btns">
+                <button id="authorize_button" onclick="handleAuthClick()">INGRESAR</button>
+                <button id="generate">GENERAR</button>
+                <button id="signout_button" onclick="handleSignoutClick()">SALIR</button>
+            </div>
+        </div>
     </div>
-    <!--Add buttons to initiate auth sequence and sign out-->
 
-    <script src="./js/main.js"></script>
-    <script src="./js/getValues.js"></script>
-    <script async defer src="./js/auth.js"></script>
-    <script async defer src="./js/getStudentData.js"></script>
-    <script async defer src="./js/generatePdf.js"></script>
-    <script async defer src="https://apis.google.com/js/api.js" id="gapi""></script>
-    <script async defer src="https://accounts.google.com/gsi/client" id="gis"></script>
-
-    <div class="btns">
-        <button id="authorize_button" onclick="handleAuthClick()">INGRESAR</button>
-        <button id="generate">GENERAR</button>
-        <button id="signout_button" onclick="handleSignoutClick()">SALIR</button>
-    </div>
+    
 </body>
 </html>
